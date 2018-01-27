@@ -1,6 +1,6 @@
 import React from 'react';
 import List from './list';
-import '../styles/storyBoard.css'
+import '../../styles/storyBoard.css'
 
 class StoryBoard extends React.Component {
     constructor(props) {

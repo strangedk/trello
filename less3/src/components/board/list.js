@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/list.css';
+import '../../styles/list.css';
 import Task from "./task";
 import AddTask from "./addTask";
 
