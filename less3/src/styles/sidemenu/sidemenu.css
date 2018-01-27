@@ -1,0 +1,29 @@
+.side-menu {
+    background: azure;
+    width: 300px;
+    padding: 7px;
+    padding-bottom: 15px;
+    border-radius: 10px;
+    position: absolute;
+    margin: 10px;
+    right: 0;
+    top: 0;
+    box-shadow: 10px 10px 5px grey;
+}
+
+.button-menu {
+    background: none;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.button-menu:active {
+    background: yellow;
+}
+
+.side-menu-buton-close {
+    right: 0;
+}

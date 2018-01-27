@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import StoryBoard from "./components/board/storyBoard";
+import StoryBoard from "./components/routes/storyBoard";
 import Header from './components/common/header';
-import Home from './components/home';
+import Home from './components/routes/home';
 
 import {Route, Switch} from 'react-router-dom';
 

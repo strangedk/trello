@@ -1,0 +1,15 @@
+.img-stickers-container {
+    height: 350px;
+    overflow: scroll;
+}
+
+.img-sticker {
+height: 100px;
+width: auto;
+cursor: pointer;
+}
+
+.img-sticker:hover {
+background: #ffff0030;
+}
+

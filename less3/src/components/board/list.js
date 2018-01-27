@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/list.css';
+import '../../styles/board/list.css';
 import Task from "./task";
 import AddTask from "./addTask";
 
@@ -24,9 +24,14 @@ export default class List extends React.Component {
             return <Task key={index} task={item} onRemoveTask={this.onRemoveTaskHandler}/>
         });
 
+        const closeButton = <span className='list-remove' onClick={this.props.onListRemove}>✖</span>;
+
         return (
             <div className='list'>
-                <div>{this.state.title}</div>
+                <div>
+                    {this.state.title}
+                    {closeButton}
+                </div>
                 {tasksDom}
                 <AddTask onAddTask={this.onAddTaskHandler}/>
             </div>

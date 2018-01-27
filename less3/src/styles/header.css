@@ -1,0 +1,15 @@
+.header-container {
+    display: inline;
+}
+
+.header {
+    overflow: hidden;
+    float: bottom;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.sub-menu {
+    position: absolute;
+    right: 10px;
+}
