@@ -2,6 +2,7 @@ import React from 'react';
 import List from '../board/list';
 import StoryBoardData from '../../data/storyBoardData';
 import '../../styles/storyBoard.css'
+import GUID from "../../data/GUID";
 
 class StoryBoard extends React.Component {
     constructor(props) {
@@ -18,7 +19,7 @@ class StoryBoard extends React.Component {
     render() {
         return <div className="lists">
             {
-                this.state.lists.map((item,index,arr) => {
+                this.state.lists.map((item,index) => {
                     return <List key={index} data={item} onListRemove={this.onRemoveListHandler}/>
                 })
             }
@@ -31,13 +32,8 @@ class StoryBoard extends React.Component {
         const {lists} = this.state;
 
         lists.push({
-            title: "New List",
-            tasks: [
-                {
-                    id: lists.length,
-                    title: "New task"
-                }
-            ]
+            id: GUID.create(),
+            title: "New List " + Math.floor(Math.random()*99)
         });
 
         this.setState({

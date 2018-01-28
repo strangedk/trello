@@ -1,37 +1,63 @@
 import React from 'react';
-import '../../styles/board/list.css';
 import Task from "./task";
 import AddTask from "./addTask";
+import GUID from "../../data/GUID";
+
+import '../../styles/board/list.css';
 
 export default class List extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            id: this.props.data.id,
-            title: this.props.data.title,
-            tasks: this.props.data.tasks
+            tasks: props.data.tasks,
+            title: props.data.title,
+            id: props.data.id
         };
+
+        console.log("constructor: " + this.title);
 
         this.onAddTaskHandler = this.onAddTaskHandler.bind(this);
         this.onRemoveTaskHandler = this.onRemoveTaskHandler.bind(this);
+
+        this.updateData = this.updateData.bind(this);
+    }
+
+    updateData(tasks, title, id) {
+        this.setState({
+            tasks,
+            title,
+            id
+        });
+    }
+
+    componentWillReceiveProps(newProps) {
+        this.updateData(
+            newProps.data.tasks,
+            newProps.data.title,
+            newProps.data.id
+        );
     }
 
     render() {
         const {tasks} = this.state;
+        const {title} = this.state;
+        const {id} = this.state;
 
-        const tasksDom = tasks.map((item, index) => {
-            return <Task key={index} task={item} onRemoveTask={this.onRemoveTaskHandler}/>
+        const tasksDom = tasks && tasks.map((item, index) => {
+            return <Task key={index} task={item} onRemoveTask={this.onRemoveTaskHandler} alt="Remove list"/>
         });
 
-        const closeButton = <span className='list-remove' onClick={this.props.onListRemove}>✖</span>;
+        const buttonRemove = <span className='list-remove' onClick={() => {
+            this.props.onListRemove(id)
+        }}>✖</span>;
 
         return (
             <div className='list'>
-                <div>
-                    {this.state.title}
-                    {closeButton}
-                </div>
+                <span>
+                    {title}
+                    {buttonRemove}
+                </span>
                 {tasksDom}
                 <AddTask onAddTask={this.onAddTaskHandler}/>
             </div>
@@ -42,8 +68,8 @@ export default class List extends React.Component {
         const {tasks} = this.state;
 
         tasks.push({
-            id:tasks.length,
-            title:task.title
+            id: GUID.create(),
+            title: task.title
         });
 
         this.setState({
@@ -55,7 +81,7 @@ export default class List extends React.Component {
         const {tasks} = this.state;
         let toRemove = -1;
 
-        tasks.some((item, index, arr) => {
+        tasks.some((item, index) => {
             if (item.id === id) {
                 toRemove = index;
             }

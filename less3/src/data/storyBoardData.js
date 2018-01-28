@@ -1,7 +1,10 @@
+import GUID from './GUID';
+
 class StoryBoardData {
     static data() {
         return [
             {
+                id: GUID.create(),
                 title: "My tasks",
                 tasks: [
                     {id: 0, title: 'Develop Game'},
@@ -12,6 +15,7 @@ class StoryBoardData {
                 ]
             },
             {
+                id: GUID.create(),
                 title: "My homework",
                 tasks: [
                     {id: 0, title: 'Fix state bugs in trello'},

@@ -29,18 +29,7 @@
    resize: none;
 }
 
-.list:hover > .list-remove {
-    visibility: visible;
-}
-
 .list-remove {
-    visibility: hidden;
     float: right;
-    text-align: center;
-    color: coral;
-    opacity: 0.4;
-}
-
-.list-remove:hover {
-    opacity: 1;
+    cursor: pointer;
 }
